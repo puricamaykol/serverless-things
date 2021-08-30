@@ -99,7 +99,8 @@
       {
           "Effect": "Allow",
           "Action": [
-              "iam:PassRole"
+              "iam:PassRole",
+              "iam:CreateRole"
           ],
           "Resource": [
               "arn:aws:iam::*:role/*"
@@ -122,7 +123,8 @@
               "iam:DeleteRole"
           ],
           "Resource": [
-              "arn:aws:iam::*:role/serverless-job-dev-us-east-1-lambdaRole"
+              "arn:aws:iam::*:role/serverless-job-dev-us-east-1-lambdaRole",
+              "arn:aws:iam::*:role/serverless-job-dev-EnterpriseLogAccessIamRole-*"
           ]
       },
       {
@@ -145,7 +147,8 @@
           "Action": [
               "logs:CreateLogGroup",
               "logs:CreateLogStream",
-              "logs:DeleteLogGroup"
+              "logs:DeleteLogGroup",
+              "logs:PutSubscriptionFilter"
           ],
           "Resource": [
               "arn:aws:logs:us-east-1:*:*"
@@ -177,16 +180,18 @@
           "Action": [
               "events:Put*",
               "events:Remove*",
-              "events:Delete*"
+              "events:Delete*",
+              "events:PutTargets"
           ],
           "Resource": [
-              "arn:aws:events:*:*:rule/serverless-job-dev-us-east-1"
+              "arn:aws:events:*:*:rule/serverless-job-dev-*"
           ]
       },
       {
           "Effect": "Allow",
           "Action": [
-              "events:DescribeRule"
+              "events:DescribeRule",
+              "events:PutRule"
           ],
           "Resource": [
               "arn:aws:events:us-east-1:*:rule/serverless-job-dev-*"
